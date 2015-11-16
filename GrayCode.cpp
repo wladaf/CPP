@@ -1,5 +1,6 @@
 #include <iostream>
 #include <String>
+#include <cmath>
 
 void Change(int &a);
 void Create(int N, std::string s[]);
@@ -14,7 +15,7 @@ int main(int argc, char** argv)
 	int i, j;
 	if(argc == 2)
 	{
-		N = atoi(argv[1]);
+		N = std::pow(2,atoi(argv[1]));
 		if(N > 0)
 		{
 			mass = new std::string[N];
@@ -27,7 +28,7 @@ int main(int argc, char** argv)
 	}
 	else
 	{
-		std::cout << "No arguments, try \"/path/to/file N\"" << std::endl;
+		std::cout << "Error. Try: graycode N [Filename]" << std::endl;
 	}
 
 	Create(N, mass);
