@@ -4,26 +4,32 @@
 void Change(int &a);
 void Create(int N, std::string s[]);
 
-int value = 1;
+
+int val = 0;
 
 int main(int argc, char** argv)
 {
 	int N;
-	int k;
-	std::string mass[];
+	std::string *mass;
 	int i, j;
-	if(argc > 1)
+	if(argc == 2)
 	{
 		N = atoi(argv[1]);
-		std::cout << "N: " << N << std::endl;
-
+		if(N > 0)
+		{
+			mass = new std::string[N];
+			std::cout << "N: " << N << std::endl;
+		}
+		else
+		{
+			std::cout << "N must be > 0" << std::endl;
+		}
 	}
 	else
 	{
 		std::cout << "No arguments, try \"/path/to/file N\"" << std::endl;
 	}
 
-	for()
 	Create(N, mass);
 
 	return 0;
@@ -32,12 +38,38 @@ int main(int argc, char** argv)
 void Change(int &a)
 {
 	a = (a + 1)%2;
+
 }
 
 
 void Create(int N, std::string s[])
 {
-	
-	std::cout << "it works!" << std::endl;
+	int value;
+	int k = 2;
+	int i;
+	std::string str = "";
+	for(i = 0; i < N; i++)
+	{
+		if(i%2 == 1)
+			Change(val);
+		s[i] = std::to_string(val);
+		
+	}
+	while(k <= N/2)
+	{
+		int value = 1;
+		for(i = 0; i < N; i++)
+		{
+			if(i%k == 0)
+				Change(value);
+			s[i] = std::to_string(value) + s[i];
+
+		}
+		k = k*2;
+	}
+	for(i = 0; i < N; i++)
+	{
+		std::cout <<  s[i] << std::endl;
+	}
 }
 
