@@ -2,22 +2,22 @@
 #include <string>
 #include <cmath>
 
-void Create(int N, int n, std::string s[]);
+void Create();
 
+int i, j;
+int N;
+int n;
+std::string *s;
 
 int main(int argc, char** argv)
 {
-	int N;
-	int n;
-	std::string *mass;
-	int i, j;
 	if(argc == 2)
 	{
 		n = atoi(argv[1]);
 		N = std::pow(2,n);
 		if(N > 0)
 		{
-			mass = new std::string[N];
+			s = new std::string[N];
 			std::cout << "N: " << N << std::endl;
 		}
 		else
@@ -30,17 +30,15 @@ int main(int argc, char** argv)
 		std::cout << "Error. Try: graycode N [Filename]" << std::endl;
 	}
 
-	Create(N, n, mass);
+	Create();
 	return 0;
 }
 
 
-void Create(int N, int n, std::string s[])
+void Create()
 {
-	int k = 2;
-	int i, j;
 	std::string str = "";
-	for(i = 0; i < n; i++)
+	for(int k = 2, i = 0; i < n; i++, k*=2)
 	{
 		if(i == 0)
 		{
@@ -55,13 +53,9 @@ void Create(int N, int n, std::string s[])
 			}
 			for(j = 0; j < k; j++)
 			{
-				if(j < k/2)
-					s[j] = "0" + s[j];
-				else
-					s[j] = "1" + s[j];
+				s[j] = std::to_string(j >= k/2)+ s[j];
 			}
 		}
-		k = k * 2;
 	}
 
 	for(i = 0; i < N; i++)
