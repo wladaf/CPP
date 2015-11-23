@@ -64,7 +64,6 @@ int main(int argc, char** argv)
 		}
 		maxCol--;
 	}
-
 	for(i = 0; i < k; i++)
 	{
 		for(j = 0; j < k; j++)
@@ -82,6 +81,7 @@ void SimpleNumbers(int n)
 	int lastSN = 3;
 	int k = 0;
 	SN = new int[n];
+	int sqrtSN;
 	bool found = false;
 	SN[0] = 1;
 	SN[1] = 2;
@@ -89,13 +89,19 @@ void SimpleNumbers(int n)
 	{
 		while(!found)
 		{
-			lastSN++;
+			lastSN += 2;
 			found = true;
+			sqrtSN = sqrt (lastSN);
 			for(j = 1; j < i; j++)
 			{
 				if(lastSN % SN[j] == 0)
 				{
 					found = false;
+					break;
+
+				}
+				if(lastSN/2 < SN[j])
+				{
 					break;
 				}
 			}
