@@ -79,19 +79,21 @@ int main(int argc, char** argv)
 
 void SimpleNumbers(int n)
 {
-	int lastSN = 0;
+	int lastSN = 3;
 	int k = 0;
 	SN = new int[n];
 	bool found = false;
-	for(i = 0; i < n; i++)
+	SN[0] = 1;
+	SN[1] = 2;
+	for(i = 2; i < n; i++)
 	{
 		while(!found)
 		{
 			lastSN++;
 			found = true;
-			for(j = 2; j < lastSN; j++)
+			for(j = 1; j < i; j++)
 			{
-				if(lastSN % j == 0)
+				if(lastSN % SN[j] == 0)
 				{
 					found = false;
 					break;
