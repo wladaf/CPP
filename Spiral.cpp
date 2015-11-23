@@ -4,6 +4,11 @@
 #include <iomanip>
 
 int i, j;
+int* SN;
+int length;
+
+void SimpleNumbers(int n);
+
 int main(int argc, char** argv)
 {
 	int k = 4;
@@ -18,7 +23,7 @@ int main(int argc, char** argv)
 	int minCol = 0;
 	int maxCol = k - 1;
 
-	int length = std::to_string(k*k).length();
+	
 
 	int **array = new int*[k];
 
@@ -26,44 +31,39 @@ int main(int argc, char** argv)
 	{
 		array[i] = new int[k];
 	}
-	n = k*k;
+	n = 0;
+	SimpleNumbers(k*k);
+
 	while(maxCol >= minCol && maxRow >= minRow)
 	{
 		for(i = maxCol; i >= minCol; i--)
 		{
-			array[i][maxRow] = n;
-			n--;
+			array[i][maxRow] = SN[n];
+			n++;
 		}
 		maxRow--;
 
 		for(i = maxRow; i >= minRow; i--)
 		{
-			array[minCol][i] = n;
-			n--;
+			array[minCol][i] = SN[n];
+			n++;
 		}
 		minCol++;
 
 		for(i = minCol; i <= maxCol; i++)
 		{
-			array[i][minRow] = n;
-			n--;
+			array[i][minRow] = SN[n];
+			n++;
 		}
 		minRow++;
 
 		for(i = minRow; i <= maxRow; i++)
 		{
-			array[maxCol][i] = n;
-			n--;
+			array[maxCol][i] = SN[n];
+			n++;
 		}
 		maxCol--;
 	}
-	/*for(i = 0; i < k; i++)
-	{
-		for(j = 0; j < k; j++)
-		{
-			array[i][j] = i*j;
-		}
-	}*/
 
 	for(i = 0; i < k; i++)
 	{
@@ -75,4 +75,33 @@ int main(int argc, char** argv)
 	}
 
 	return 0;
+}
+
+void SimpleNumbers(int n)
+{
+	int lastSN = 0;
+	int k = 0;
+	SN = new int[n];
+	bool found = false;
+	for(i = 0; i < n; i++)
+	{
+		while(!found)
+		{
+			lastSN++;
+			found = true;
+			for(j = 2; j < lastSN; j++)
+			{
+				if(lastSN % j == 0)
+				{
+					found = false;
+					break;
+				}
+			}
+				
+		}
+		found = false;
+		SN[i] = lastSN;
+		length = std::to_string(lastSN).length();
+	}
+
 }
