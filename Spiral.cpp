@@ -23,8 +23,6 @@ int main(int argc, char** argv)
 	int minCol = 0;
 	int maxCol = k - 1;
 
-	
-
 	int **array = new int*[k];
 
 	for(i = 0; i < k; i++)
@@ -79,9 +77,7 @@ int main(int argc, char** argv)
 void SimpleNumbers(int n)
 {
 	int lastSN = 3;
-	int k = 0;
 	SN = new int[n];
-	int sqrtSN;
 	bool found = false;
 	SN[0] = 1;
 	SN[1] = 2;
@@ -91,7 +87,6 @@ void SimpleNumbers(int n)
 		{
 			lastSN += 2;
 			found = true;
-			sqrtSN = sqrt (lastSN);
 			for(j = 1; j < i; j++)
 			{
 				if(lastSN % SN[j] == 0)
@@ -104,8 +99,7 @@ void SimpleNumbers(int n)
 				{
 					break;
 				}
-			}
-				
+			}	
 		}
 		found = false;
 		SN[i] = lastSN;
