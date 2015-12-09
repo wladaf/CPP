@@ -30,7 +30,14 @@ int main(int argc, char const *argv[]) {
   {
     for(j = 0; j < n; j++)
     {
-      std::cout << result[i][j] << " ";
+      if(result[i][j] == 9)
+      {
+        std::cout << "@ ";
+      }
+      else
+      {
+        std::cout << result[i][j] << " ";
+      }
     }
     std::cout << std::endl;
   }
@@ -53,8 +60,23 @@ void CreateAndGenerateM(int n)
   {
     for(j = 0; j < n; j++)
     {
-      mArray[0][i][j] = rand() % 5 + 1;
-      std::cout << mArray[0][i][j] << " ";
+      if(i == j)
+      {
+        mArray[0][i][j] = 9;
+      }
+      else
+      {
+        mArray[0][i][j] = rand() % 9 + 1;
+      }
+      if(mArray[0][i][j] == 9)
+      {
+        std::cout << "@ ";
+      }
+      else
+      {
+        std::cout << mArray[0][i][j] << " ";
+      }
+
     }
     std::cout << std::endl;
   }
