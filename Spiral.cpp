@@ -16,20 +16,19 @@ int main(int argc, char** argv)
 	{
 		k = atoi(argv[1]);
 	}
-	
-	int n;
+
+	int n = 0;
 	int minRow = 0;
 	int maxRow = k - 1;
 	int minCol = 0;
 	int maxCol = k - 1;
 
 	int **array = new int*[k];
-
 	for(i = 0; i < k; i++)
 	{
 		array[i] = new int[k];
 	}
-	n = 0;
+
 	SimpleNumbers(k*k);
 
 	while(maxCol >= minCol && maxRow >= minRow)
@@ -99,7 +98,7 @@ void SimpleNumbers(int n)
 				{
 					break;
 				}
-			}	
+			}
 		}
 		found = false;
 		SN[i] = lastSN;

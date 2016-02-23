@@ -7,6 +7,8 @@ int** result;
 int i, j, k, l;
 int n;
 
+int inf = 999;
+
 void CreateAndGenerateM(int n);
 void Find();
 void MatrixMult(int ind);
@@ -30,7 +32,7 @@ int main(int argc, char const *argv[]) {
   {
     for(j = 0; j < n; j++)
     {
-      if(result[i][j] == 9)
+      if(result[i][j] == inf)
       {
         std::cout << "@ ";
       }
@@ -70,6 +72,7 @@ void CreateAndGenerateM(int n)
       }
       if(mArray[0][i][j] == 9)
       {
+        mArray[0][i][j] = inf;
         std::cout << "@ ";
       }
       else
